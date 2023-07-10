@@ -219,7 +219,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2023-07-10 18:35:46 / 修改时间：18:43:10" itemprop="dateCreated datePublished" datetime="2023-07-10T18:35:46+08:00">2023-07-10</time>
+      <time title="创建时间：2023-07-10 18:35:46 / 修改时间：20:41:26" itemprop="dateCreated datePublished" datetime="2023-07-10T18:35:46+08:00">2023-07-10</time>
     </span>
 
   
@@ -229,7 +229,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>70</span>
+      <span>512</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -248,6 +248,11 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>最近在研究各种各样的关于C++的小东西，什么新特性啊、cppfront啊，其中比较头疼的就是C++20的四大天王特性之一的modules了。</p>
+<h2 id="啥是module"><a href="#啥是module" class="headerlink" title="啥是module"></a>啥是module</h2><p>传统上，C++组织源码的方式是和C一样的：通过编译器的<code>#include</code>预处理指令来将文件“包含”进当前的工作文件当中：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;header&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>这样的处理方式对于C语言来说，问题不大，毕竟C语言没有模版，不是很担心代码膨胀的问题；然鹅，对于<code>template &lt;typename _Tp&gt;</code>、<code>inline function</code>以及<code>constexpr function</code>漫天飞舞的C++来说，使用这种处理方式往往会带来难以预料到的后果——</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello, world.\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按照C++之父<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%AC%E8%B4%BE%E5%B0%BC%C2%B7%E6%96%AF%E7%89%B9%E5%8A%B3%E6%96%AF%E7%89%B9%E5%8D%A2%E6%99%AE/10613051">Bjarne Stroustrup</a>在他的<a target="_blank" rel="noopener" href="https://www.stroustrup.com/hopl20main-p5-p-bfc9cd4--final.pdf">HOPL4论文</a>（<a target="_blank" rel="noopener" href="https://github.com/Cpp-Club/Cxx_HOPL4_zh/blob/main/09.md">中文翻译</a>）中的说法，在经过<code>#include</code>的处理之后，这段原本只有70个字符的简单代码将会产生419909个字符！想想看吧，这会给C++编译器带来多么巨大的压力。</p>
 
       
     </div>
@@ -287,7 +292,7 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">0k</span>
+    <span title="站点总字数">1k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">

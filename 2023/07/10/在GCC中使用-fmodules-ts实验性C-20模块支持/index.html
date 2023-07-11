@@ -23,14 +23,14 @@
 
     <meta name="description" content="最近在研究各种各样的关于C++的小东西，什么新特性啊、cppfront啊，其中比较头疼的就是C++20的四大天王特性之一的modules了。 啥是module传统上，C++组织源码的方式是和C一样的：通过编译器的#include预处理指令来将文件“包含”进当前的工作文件当中： 1#include &lt;header&gt; 这样的处理方式对于C语言来说，问题不大，毕竟C语言没有模版，不是很担心代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在GCC中使用-fmodules-ts实验性C++20模块支持">
+<meta property="og:title" content="吐槽：在GCC中使用-fmodules-ts实验性C++20模块支持">
 <meta property="og:url" content="http://curodenz.xyz/2023/07/10/%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8-fmodules-ts%E5%AE%9E%E9%AA%8C%E6%80%A7C-20%E6%A8%A1%E5%9D%97%E6%94%AF%E6%8C%81/index.html">
 <meta property="og:site_name" content="Curodenz">
 <meta property="og:description" content="最近在研究各种各样的关于C++的小东西，什么新特性啊、cppfront啊，其中比较头疼的就是C++20的四大天王特性之一的modules了。 啥是module传统上，C++组织源码的方式是和C一样的：通过编译器的#include预处理指令来将文件“包含”进当前的工作文件当中： 1#include &lt;header&gt; 这样的处理方式对于C语言来说，问题不大，毕竟C语言没有模版，不是很担心代">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://curodenz.xyz/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-07-10%20212936.png">
 <meta property="article:published_time" content="2023-07-10T10:35:46.000Z">
-<meta property="article:modified_time" content="2023-07-10T13:36:01.815Z">
+<meta property="article:modified_time" content="2023-07-11T04:37:51.078Z">
 <meta property="article:author" content="Curodenz Ritcher">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -41,10 +41,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://curodenz.xyz/2023/07/10/%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8-fmodules-ts%E5%AE%9E%E9%AA%8C%E6%80%A7C-20%E6%A8%A1%E5%9D%97%E6%94%AF%E6%8C%81/","path":"2023/07/10/在GCC中使用-fmodules-ts实验性C-20模块支持/","title":"在GCC中使用-fmodules-ts实验性C++20模块支持"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://curodenz.xyz/2023/07/10/%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8-fmodules-ts%E5%AE%9E%E9%AA%8C%E6%80%A7C-20%E6%A8%A1%E5%9D%97%E6%94%AF%E6%8C%81/","path":"2023/07/10/在GCC中使用-fmodules-ts实验性C-20模块支持/","title":"吐槽：在GCC中使用-fmodules-ts实验性C++20模块支持"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>在GCC中使用-fmodules-ts实验性C++20模块支持 | Curodenz</title>
+<title>吐槽：在GCC中使用-fmodules-ts实验性C++20模块支持 | Curodenz</title>
   
 
 
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%A5%E6%98%AFmodule"><span class="nav-number">1.</span> <span class="nav-text">啥是module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#module-in-C"><span class="nav-number">2.</span> <span class="nav-text">module in C++</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%A5%E6%98%AFmodule"><span class="nav-number">1.</span> <span class="nav-text">啥是module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#module-in-C"><span class="nav-number">2.</span> <span class="nav-text">module in C++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%AE%9E%E9%AA%8C%E6%80%A7%E6%A8%A1%E5%9D%97%E7%89%B9%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">在GCC中使用实验性模块特性</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -211,12 +211,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="在GCC中使用-fmodules-ts实验性C++20模块支持 | Curodenz">
+      <meta itemprop="name" content="吐槽：在GCC中使用-fmodules-ts实验性C++20模块支持 | Curodenz">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在GCC中使用-fmodules-ts实验性C++20模块支持
+          吐槽：在GCC中使用-fmodules-ts实验性C++20模块支持
         </h1>
 
         <div class="post-meta-container">
@@ -226,9 +226,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2023-07-10 18:35:46 / 修改时间：21:36:01" itemprop="dateCreated datePublished" datetime="2023-07-10T18:35:46+08:00">2023-07-10</time>
+      <time title="创建时间：2023-07-10 18:35:46" itemprop="dateCreated datePublished" datetime="2023-07-10T18:35:46+08:00">2023-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-07-11 12:37:51" itemprop="dateModified" datetime="2023-07-11T12:37:51+08:00">2023-07-11</time>
     </span>
 
   
@@ -245,14 +251,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
+      <span>2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -283,6 +289,24 @@
 <p>为什么？？？</p>
 <p>Why？？？？？</p>
 <p>部分支持？？？</p>
+<p>没错，已经3202年了，C++23标准已经快要定稿了，C++26标准已经开始提上日程了，但！是！GCC和Clang仍然木有完善对module特性的支持，只有微软家的MSVC在这方面干的比较好：他们甚至连标准库模块<code>std</code>与<code>std.compat</code>都搞好了。</p>
+<p>气人啊。</p>
+<h2 id="在GCC中使用实验性模块特性"><a href="#在GCC中使用实验性模块特性" class="headerlink" title="在GCC中使用实验性模块特性"></a>在GCC中使用实验性模块特性</h2><p>啊，是的，正如你所见，在GCC中，模块目前还只是一个ts特性，需要用这个指令开启：<code>-fmodules-ts</code></p>
+<p>具体的使用方法大概如下：</p>
+<ol>
+<li><p>新建hello.cppm文件</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello.cppm</span></span><br><span class="line"><span class="keyword">module</span>; <span class="comment">// 全局模块</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string_view&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">module</span> hello; <span class="comment">// 要导出的模块</span></span><br><span class="line"><span class="function"><span class="keyword">export</span> <span class="keyword">auto</span> <span class="title">hello</span><span class="params">(std::string_view <span class="type">const</span>&amp; name)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello, &quot;</span> &lt;&lt; name &lt;&lt; <span class="string">&quot;.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建main.cpp文件</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="keyword">import</span> hello;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">main</span><span class="params">()</span> -&gt; <span class="type">int</span> </span>&#123;</span><br><span class="line">    <span class="built_in">hello</span>(<span class="string">&quot;Curodenz&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用以下的指令编译：</p>
+<figure class="highlight ps"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ <span class="literal">-std</span>=c++<span class="number">20</span> <span class="literal">-fmodules-ts</span> main.cpp hello.cppm <span class="literal">-static</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>运行后，应该会得到这样的结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, Curodenz.</span><br></pre></td></tr></table></figure>
+
+<p>就酱！</p>
 
     </div>
 
@@ -300,7 +324,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://curodenz.xyz/2023/07/10/%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8-fmodules-ts%E5%AE%9E%E9%AA%8C%E6%80%A7C-20%E6%A8%A1%E5%9D%97%E6%94%AF%E6%8C%81/" title="在GCC中使用-fmodules-ts实验性C++20模块支持">http://curodenz.xyz/2023/07/10/在GCC中使用-fmodules-ts实验性C-20模块支持/</a>
+      <a href="http://curodenz.xyz/2023/07/10/%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8-fmodules-ts%E5%AE%9E%E9%AA%8C%E6%80%A7C-20%E6%A8%A1%E5%9D%97%E6%94%AF%E6%8C%81/" title="吐槽：在GCC中使用-fmodules-ts实验性C++20模块支持">http://curodenz.xyz/2023/07/10/在GCC中使用-fmodules-ts实验性C-20模块支持/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -343,14 +367,14 @@
       <i class="fa fa-chart-line"></i>
     </span>
       <span>站点总字数：</span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">2k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2 分钟</span>
+    <span title="站点阅读时长">4 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

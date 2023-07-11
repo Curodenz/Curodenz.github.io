@@ -231,7 +231,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-07-11 18:25:26" itemprop="dateModified" datetime="2023-07-11T18:25:26+08:00">2023-07-11</time>
+      <time title="修改时间：2023-07-11 20:37:28" itemprop="dateModified" datetime="2023-07-11T20:37:28+08:00">2023-07-11</time>
     </span>
 
   
@@ -241,7 +241,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2k</span>
+      <span>2.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -259,30 +259,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>最近在研究各种各样的关于C++的小东西，什么新特性啊、cppfront啊，其中比较头疼的就是C++20的四大天王特性之一的modules了。</p>
-<h2 id="啥是module"><a href="#啥是module" class="headerlink" title="啥是module"></a>啥是module</h2><p>传统上，C++组织源码的方式是和C一样的：通过编译器的<code>#include</code>预处理指令来将文件“包含”进当前的工作文件当中：</p>
+          <p>最近在研究各种各样的关于C++的小东西，什么新特性啊、cppfront啊，其中比较头疼的就是C++20的四大天王特性之一的 <strong><code>modules</code></strong> 了。</p>
+<h2 id="啥是modules"><a href="#啥是modules" class="headerlink" title="啥是modules"></a><strong>啥是modules</strong></h2><p>传统上，C++组织源码的方式是和C一样的：通过编译器的 <strong><code>#include</code>预处理指令</strong> 来将文件“包含”进当前的工作文件当中：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;header&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>这样的处理方式对于C语言来说，问题不大，毕竟C语言没有模版，不是很担心代码膨胀的问题；然鹅，对于<code>template &lt;typename _Tp&gt;</code>、<code>inline function</code>以及<code>constexpr function</code>漫天飞舞的C++来说，使用这种处理方式往往会带来难以预料到的后果——</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello, world.\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>先浅浅看一下这份简单的入门级别的Hello，World！程序。是不是看起来还挺人畜无害的？</p>
-<p>但是，按照C++之父<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%AC%E8%B4%BE%E5%B0%BC%C2%B7%E6%96%AF%E7%89%B9%E5%8A%B3%E6%96%AF%E7%89%B9%E5%8D%A2%E6%99%AE/10613051">Bjarne Stroustrup</a>在他的<a target="_blank" rel="noopener" href="https://www.stroustrup.com/hopl20main-p5-p-bfc9cd4--final.pdf">HOPL4论文</a>（<a target="_blank" rel="noopener" href="https://github.com/Cpp-Club/Cxx_HOPL4_zh/blob/main/09.md">中文翻译</a>）中的说法，在经过<code>#include</code>的处理之后，这段原本只有70个字符的简单代码将会产生419909个字符！即使现代C++编译器已经达到了一个惊人的速度，这也会给C++编译器带来巨大的压力。因此，引入一种新的源码管理机制迫在眉睫。</p>
+<p>先浅浅看一下这份简单的入门级别的<code>Hello，World!</code>程序。是不是看起来还挺人畜无害的？</p>
+<p>但是，按照C++之父<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%AC%E8%B4%BE%E5%B0%BC%C2%B7%E6%96%AF%E7%89%B9%E5%8A%B3%E6%96%AF%E7%89%B9%E5%8D%A2%E6%99%AE/10613051">Bjarne Stroustrup</a>在他的<a target="_blank" rel="noopener" href="https://www.stroustrup.com/hopl20main-p5-p-bfc9cd4--final.pdf">HOPL4论文</a>（<a target="_blank" rel="noopener" href="https://github.com/Cpp-Club/Cxx_HOPL4_zh/blob/main/09.md">中文翻译</a>）中的说法，在经过<code>#include</code>的处理之后，这段原本只有 <strong>70</strong> 个字符的简单代码将会产生 <strong>419909</strong> 个字符！即使现代C++编译器已经达到了一个惊人的速度，这也会给C++编译器带来巨大的压力。因此，引入一种新的源码管理机制迫在眉睫。</p>
 <p>这也是<code>module</code>引入C++的原因。</p>
-<h2 id="module-in-C"><a href="#module-in-C" class="headerlink" title="module in C++"></a>module in C++</h2><p>在其他语言中，类似<code>module</code>的概念一点儿也不罕见——或者说，基本大家都有（笑。Python中有包管理，Java中有<code>package</code>······但是我们的C++仍旧在默默坚持<code>#include</code>，可以说是真爱了。</p>
+<h2 id="modules-in-C"><a href="#modules-in-C" class="headerlink" title="modules in C++"></a><strong>modules in C++</strong></h2><p>在其他语言中，类似<code>module</code>的概念一点儿也不罕见——或者说，基本大家都有（笑。Python中有包管理，Java中有<code>package</code>······但是我们的C++仍旧在默默坚持<code>#include</code>，可以说是真爱了。</p>
 <p>而在C++20标准中，历经十多年的探讨，C++终于引入了module特性，走出了模块化的第一步，并在稍后的C++23标准中大步前进——<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/standard_library">标准库模块</a><code>std</code>以及与C兼容的模块<code>std.compat</code>。</p>
-<p>也就是说，在理想的条件下，我们终于不再需要<code>#include</code>这<code>#include</code>那的了，只需要简简单单的一句<code>import std;</code>，就能打开新世界的大门：</p>
+<p>也就是说，在理想的条件下，我们终于不再需要<code>#include</code>这<code>#include</code>那的了，只需要简简单单的一句 <strong><code>import std;</code></strong> ，就能打开新世界的大门：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">main</span><span class="params">()</span> -&gt; <span class="type">int</span> </span>&#123;</span><br><span class="line">    std::<span class="built_in">println</span>(<span class="string">&quot;Hello, world!&quot;</span>); <span class="comment">// 使用了C++23中的std::println()</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>多么美妙绝伦！！以后也可以开始慢慢放弃头文件的使用了，module不香吗：</p>
+<p>多么美妙绝伦！！以后也可以开始慢慢放弃头文件的使用了，<code>modules</code>不香吗：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">module</span> plus;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">export</span> <span class="keyword">auto</span> <span class="title">plus</span><span class="params">(<span class="type">const</span> <span class="keyword">auto</span>&amp; arg1, <span class="type">const</span> <span class="keyword">auto</span>&amp; arg2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arg1 + arg2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="keyword">import</span> plus;</span><br><span class="line"></span><br><span class="line"><span class="built_in">plus</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 <p>我的妈呀！这对于无数挣扎于头文件的罪恶海洋中的孩子们来说，简直就是救赎啊！！</p>
-<p>可是，当热泪盈眶的孩子们打开了自己的GCC编译器后，发现了一件了不得的事情：</p>
+<p>可是，当热泪盈眶的孩子们打开了<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/compiler_support/20">cppreference页面</a>后，发现了一件了不得的事情：</p>
 <p><img src="/../images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-07-10%20212936.png" alt="hhhhhh没想到吧3202年了GCC和Clang都还没完全支持module" title="hhhhhh没想到吧3202年了GCC和Clang都还没完全支持module"></p>
-<p>为什么？？？</p>
-<p>Why？？？？？</p>
+<p>？？？</p>
 <p>部分支持？？？</p>
-<p>没错，已经3202年了，C++23标准已经快要定稿了，C++26标准已经开始提上日程了，但！是！GCC和Clang仍然木有完善对module特性的支持，只有微软家的MSVC在这方面干的比较好：他们甚至连标准库模块<code>std</code>与<code>std.compat</code>都搞好了。</p>
-<p>气人啊。</p>
-<h2 id="在GCC中使用实验性模块特性"><a href="#在GCC中使用实验性模块特性" class="headerlink" title="在GCC中使用实验性模块特性"></a>在GCC中使用实验性模块特性</h2><p>啊，是的，正如你所见，在GCC中，模块目前还只是一个ts特性，需要用这个指令开启：<code>-fmodules-ts</code></p>
+<p>没错，已经3202年了，C++23标准已经快要定稿了，C++26标准已经开始提上日程了，但！是！GCC和Clang仍然木有完善对<code>modules</code>特性的支持，只有微软家的MSVC在这方面干的比较好：不仅完全地支持了模块特性，他们甚至连C++23的<strong>C++标准库模块</strong><code>std</code>与<code>std.compat</code>都搞好了。</p>
+<p>真是······</p>
+<h2 id="在GCC中使用实验性模块特性"><a href="#在GCC中使用实验性模块特性" class="headerlink" title="在GCC中使用实验性模块特性"></a>在GCC中使用实验性模块特性</h2><p>啊，是的，正如你所见，在GCC中，模块目前还只是一个<strong>ts特性</strong>，需要用这个指令开启：<code>-fmodules-ts</code></p>
+<p>截止目前，GCC对<code>modules</code>特性的支持还并不完善，可以参考他们的<a target="_blank" rel="noopener" href="https://gcc.gnu.org/onlinedocs/gcc-12.1.0/gcc/C_002b_002b-Modules.html">相关页面</a>：</p>
 <p>具体的使用方法大概如下：</p>
 <ol>
 <li><p>新建hello.cppm文件</p>
@@ -297,7 +297,9 @@
 <p>运行后，应该会得到这样的结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, Curodenz.</span><br></pre></td></tr></table></figure>
 
-<p>就酱！</p>
+<p>就这样！虽然有一点点的麻烦，但是好歹是能用了······</p>
+<p>用了一个Python的脚本来测试，发现速度上的确有了提升：使用<code>#include &lt;header&gt;</code>与等效的<code>import module;</code>方案，后者大概有50%的提升。这还只是一个使用了旧的编译指令与模块导入的“混合事例”，等到完全支持std模块后，恐怕速度会更快吧。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>使用<code>modules</code>确实能够对编译速度有不错的提升，但遗憾的就是GCC的支持并不完善······罢了，就当是等等党再次等待胜利吧。XD</p>
 
       
     </div>

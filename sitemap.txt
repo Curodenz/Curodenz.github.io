@@ -4,4 +4,4 @@ http://curodenz.xyz/about/index.html
 http://curodenz.xyz/categories/index.html
 http://curodenz.xyz/lib/pace/README.html
 http://curodenz.xyz/
-http://curodenz.xyz/tags/Coding-C/
+http://curodenz.xyz/tags/C/

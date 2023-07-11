@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://curodenz.xyz/tags/index.html</loc>
+    
+    <lastmod>2023-07-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://curodenz.xyz/2023/07/10/%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8-fmodules-ts%E5%AE%9E%E9%AA%8C%E6%80%A7C-20%E6%A8%A1%E5%9D%97%E6%94%AF%E6%8C%81/</loc>
     
     <lastmod>2023-07-11</lastmod>
@@ -13,7 +22,7 @@
   <url>
     <loc>http://curodenz.xyz/about/index.html</loc>
     
-    <lastmod>2023-07-10</lastmod>
+    <lastmod>2023-07-11</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>http://curodenz.xyz/categories/index.html</loc>
-    
-    <lastmod>2023-07-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://curodenz.xyz/tags/index.html</loc>
     
     <lastmod>2023-07-10</lastmod>
     

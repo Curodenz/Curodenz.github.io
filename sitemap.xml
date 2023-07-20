@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://curodenz.xyz/%E4%BD%BF%E7%94%A8MediaWiki%E5%9C%A8%E4%BD%A0%E7%9A%84Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BB%B4%E5%9F%BA%E7%B3%BB%E7%BB%9F/index.html</loc>
+    
+    <lastmod>2023-07-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://curodenz.xyz/2023/07/10/%E5%9C%A8GCC%E4%B8%AD%E4%BD%BF%E7%94%A8-fmodules-ts%E5%AE%9E%E9%AA%8C%E6%80%A7C-20%E6%A8%A1%E5%9D%97%E6%94%AF%E6%8C%81/</loc>
     
     <lastmod>2023-07-11</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>http://curodenz.xyz/tags/index.html</loc>
-    
-    <lastmod>2023-07-11</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://curodenz.xyz/about/index.html</loc>
     
     <lastmod>2023-07-11</lastmod>
     
@@ -49,7 +49,7 @@
 
   <url>
     <loc>http://curodenz.xyz/</loc>
-    <lastmod>2023-07-11</lastmod>
+    <lastmod>2023-07-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -57,7 +57,7 @@
   
   <url>
     <loc>http://curodenz.xyz/tags/C/</loc>
-    <lastmod>2023-07-11</lastmod>
+    <lastmod>2023-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

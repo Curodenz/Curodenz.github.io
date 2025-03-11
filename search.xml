@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/03/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>个人博客搭建小记</title>
+    <url>/2025/03/11/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我认为，个人博客对一个学习编程的人来说相当重要，写博客本身就是一个输出的过程，在这期间不仅能有效的梳理自己的思绪和所学的知识，同时还能记录自己的当下的感想，是一个值得坚持的好习惯。</p>
+<p>当下，构建一个个人博客的门槛并不高——不需要一台自己的服务器，可以使用静态博客框架托管在 <a href="https://pages.github.com/">Github Pages</a> 上，也不需要自己完全从零开始构建，已经有了大量成熟的博客框架和美观的主题任君选择。</p>
+<p>本文便是我个人搭建自己的博客的步骤，仅供记录，如有疏漏，还望不吝指教。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>我使用 <a href="https://hexo.io/">Hexo</a> 作为博客的基本框架，<a href="https://theme-next.js.org/">Next</a> 作为博客的主题，并将博客托管在 Github Pages 上。</p>
+<p>可以从<a href="https://nodejs.org/zh-cn/download">官方下载页</a>获取安装途径，也可以使用包管理器：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install nodejs npm <span class="comment"># for debian &amp; ubuntu</span></span><br><span class="line"></span><br><span class="line">$ yay -S nodejs npm <span class="comment"># for Archlinux</span></span><br><span class="line"></span><br><span class="line">$ brew install node <span class="comment"># for MacOS with homebrew</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>验证安装：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>能看到输出便</p>
 ]]></content>
   </entry>
 </search>

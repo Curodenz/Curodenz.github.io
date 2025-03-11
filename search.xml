@@ -7,13 +7,14 @@
 <p>当下，构建一个个人博客的门槛并不高——不需要一台自己的服务器，可以使用静态博客框架托管在 <a href="https://pages.github.com/">Github Pages</a> 上，也不需要自己完全从零开始构建，已经有了大量成熟的博客框架和美观的主题任君选择。</p>
 <p>本文便是我个人搭建自己的博客的步骤，仅供记录，如有疏漏，还望不吝指教。</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>我使用 <a href="https://hexo.io/">Hexo</a> 作为博客的基本框架，<a href="https://theme-next.js.org/">Next</a> 作为博客的主题，并将博客托管在 Github Pages 上。</p>
-<p>可以从<a href="https://nodejs.org/zh-cn/download">官方下载页</a>获取安装途径，也可以使用包管理器：</p>
+<h3 id="Nodejs-运行时安装与配置"><a href="#Nodejs-运行时安装与配置" class="headerlink" title="Nodejs 运行时安装与配置"></a>Nodejs 运行时安装与配置</h3><p>可以从<a href="https://nodejs.org/zh-cn/download">官方下载页</a>获取安装途径，也可以使用包管理器：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install nodejs npm <span class="comment"># for debian &amp; ubuntu</span></span><br><span class="line"></span><br><span class="line">$ yay -S nodejs npm <span class="comment"># for Archlinux</span></span><br><span class="line"></span><br><span class="line">$ brew install node <span class="comment"># for MacOS with homebrew</span></span><br></pre></td></tr></table></figure>
 
 <p>验证安装：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
 
-<p>能看到输出便</p>
-]]></content>
+<p>能看到输出便证明安装成功了。</p>
+<p>对于未配置梯子的朋友，建议配置 npm 的镜像源：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm <span class="built_in">set</span> </span><br></pre></td></tr></table></figure>]]></content>
   </entry>
 </search>

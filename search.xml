@@ -6,15 +6,34 @@
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我认为，个人博客对一个学习编程的人来说相当重要，写博客本身就是一个输出的过程，在这期间不仅能有效的梳理自己的思绪和所学的知识，同时还能记录自己的当下的感想，是一个值得坚持的好习惯。</p>
 <p>当下，构建一个个人博客的门槛并不高——不需要一台自己的服务器，可以使用静态博客框架托管在 <a href="https://pages.github.com/">Github Pages</a> 上，也不需要自己完全从零开始构建，已经有了大量成熟的博客框架和美观的主题任君选择。</p>
 <p>本文便是我个人搭建自己的博客的步骤，仅供记录，如有疏漏，还望不吝指教。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>我使用 <a href="https://hexo.io/">Hexo</a> 作为博客的基本框架，<a href="https://theme-next.js.org/">Next</a> 作为博客的主题，并将博客托管在 Github Pages 上。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>我使用 <a href="https://hexo.io/">Hexo</a> 作为博客的基本框架，<a href="https://theme-next.js.org/">NexT</a> 作为博客的主题，并将博客托管在 Github Pages 上。</p>
 <h3 id="Nodejs-运行时安装与配置"><a href="#Nodejs-运行时安装与配置" class="headerlink" title="Nodejs 运行时安装与配置"></a>Nodejs 运行时安装与配置</h3><p>可以从<a href="https://nodejs.org/zh-cn/download">官方下载页</a>获取安装途径，也可以使用包管理器：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install nodejs npm <span class="comment"># for debian &amp; ubuntu</span></span><br><span class="line"></span><br><span class="line">$ yay -S nodejs npm <span class="comment"># for Archlinux</span></span><br><span class="line"></span><br><span class="line">$ brew install node <span class="comment"># for MacOS with homebrew</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install nodejs npm <span class="comment"># for debian &amp; ubuntu</span></span><br><span class="line"></span><br><span class="line">$ yay -S nodejs npm <span class="comment"># for Archlinux</span></span><br><span class="line"></span><br><span class="line">$ brew install node <span class="comment"># for MacOS with homebrew</span></span><br></pre></td></tr></table></figure>
 
 <p>验证安装：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
 
 <p>能看到输出便证明安装成功了。</p>
-<p>对于未配置梯子的朋友，建议配置 npm 的镜像源：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm <span class="built_in">set</span> </span><br></pre></td></tr></table></figure>]]></content>
+<p>对于没有梯子的朋友，建议配置 npm 的镜像源：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置腾讯云镜像源</span></span><br><span class="line">$ npm config <span class="built_in">set</span> registry http://mirrors.cloud.tencent.com/npm/ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置淘宝镜像源</span></span><br><span class="line">$ npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装-Hexo-命令行工具"><a href="#安装-Hexo-命令行工具" class="headerlink" title="安装 Hexo 命令行工具"></a>安装 Hexo 命令行工具</h3><p>我使用 Hexo 作为博客的基本框架，因为它在保持简单的情况下能做到基本满足我的需求。</p>
+<p>想搭建基于 Hexo 的个人博客，需要安装 Hexo 的命令行工具：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装后，执行 <code>hexo</code> 命令，应该可以看到这样的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Usage: hexo &lt;command&gt;</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  help     Get help on a command.</span><br><span class="line">  init     Create a new Hexo folder.</span><br><span class="line">  version  Display version information.</span><br><span class="line"></span><br><span class="line">Global Options:</span><br><span class="line">  --config  Specify config file instead of using _config.yml</span><br><span class="line">  --cwd     Specify the CWD</span><br><span class="line">  --debug   Display all verbose messages in the terminal</span><br><span class="line">  --draft   Display draft posts</span><br><span class="line">  --safe    Disable all plugins and scripts</span><br><span class="line">  --silent  Hide output on console</span><br><span class="line"></span><br><span class="line">For more help, you can use &#x27;hexo help [command]&#x27; for the detailed information</span><br><span class="line">or you can check the docs: https://hexo.io/docs/</span><br></pre></td></tr></table></figure>
+
+<h2 id="博客设置"><a href="#博客设置" class="headerlink" title="博客设置"></a>博客设置</h2><h3 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h3><p>新建一个空文件夹作为博客的源文件夹：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> blog</span><br><span class="line">$ <span class="built_in">cd</span> blog</span><br></pre></td></tr></table></figure>
+
+<p>初始化 Hexo：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：这个过程会使用 git 命令从 Github 拉取文件，因为种种原因，Github 在国内无法稳定访问。可以通过 <a href="https://steampp.net/">Watt Toolkit</a> 或修改 DNS 文件访问，这里按下不表。</p>
+<p>初始化成功后，应该能看到这样的输出：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging with Hexo!</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试博客构建"><a href="#测试博客构建" class="headerlink" title="测试博客构建"></a>测试博客构建</h3>]]></content>
   </entry>
 </search>

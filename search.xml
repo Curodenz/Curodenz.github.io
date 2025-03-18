@@ -3,12 +3,12 @@
   <entry>
     <title>个人博客搭建小记</title>
     <url>/2025/03/11/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%B0%8F%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我认为，个人博客对一个学习编程的人来说相当重要，写博客本身就是一个输出的过程，在这期间不仅能有效的梳理自己的思绪和所学的知识，同时还能记录自己的当下的感想，是一个值得坚持的好习惯。</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我认为，个人博客对鱼计算机学习者很重要，不仅因为搭建和管理个人博客是一项有趣的实践，同时写博客本身就是一个输出的过程：把学到的知识经过自己的整理和编排写成博客文章，同时还能记录自己当下的所感所想，一举两得。</p>
 <p>当下，构建一个个人博客的门槛并不高——不需要一台自己的服务器，可以使用静态博客框架托管在 <a href="https://pages.github.com/">Github Pages</a> 上，也不需要自己完全从零开始构建，已经有了大量成熟的博客框架和美观的主题任君选择。</p>
 <p>本文便是我个人搭建自己的博客的步骤，仅供记录，如有疏漏，还望不吝指教。</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>我使用 <a href="https://hexo.io/">Hexo</a> 作为博客的基本框架，<a href="https://theme-next.js.org/">NexT</a> 作为博客的主题，并将博客托管在 Github Pages 上。</p>
 <h3 id="Nodejs-运行时安装与配置"><a href="#Nodejs-运行时安装与配置" class="headerlink" title="Nodejs 运行时安装与配置"></a>Nodejs 运行时安装与配置</h3><p>可以从<a href="https://nodejs.org/zh-cn/download">官方下载页</a>获取安装途径，也可以使用包管理器：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install nodejs npm <span class="comment"># for debian &amp; ubuntu</span></span><br><span class="line"></span><br><span class="line">$ yay -S nodejs npm <span class="comment"># for Archlinux</span></span><br><span class="line"></span><br><span class="line">$ brew install node <span class="comment"># for MacOS with homebrew</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">sudo</span> apt install nodejs npm <span class="comment"># for debian &amp; ubuntu</span></span><br><span class="line"></span><br><span class="line">$ yay -S nodejs npm <span class="comment"># for Archlinux</span></span><br><span class="line"></span><br><span class="line">$ brew install node npm <span class="comment"># for MacOS with homebrew</span></span><br></pre></td></tr></table></figure>
 
 <p>验证安装：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">$ npm -v</span><br></pre></td></tr></table></figure>
@@ -18,7 +18,7 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置腾讯云镜像源</span></span><br><span class="line">$ npm config <span class="built_in">set</span> registry http://mirrors.cloud.tencent.com/npm/ </span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置淘宝镜像源</span></span><br><span class="line">$ npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>
 
 <h3 id="安装-Hexo-命令行工具"><a href="#安装-Hexo-命令行工具" class="headerlink" title="安装 Hexo 命令行工具"></a>安装 Hexo 命令行工具</h3><p>我使用 Hexo 作为博客的基本框架，因为它在保持简单的情况下能做到基本满足我的需求。</p>
-<p>想搭建基于 Hexo 的个人博客，需要安装 Hexo 的命令行工具：</p>
+<p>想搭建基于 Hexo 框架的个人博客，需要安装 Hexo 的命令行工具：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 
 <p>安装后，执行 <code>hexo</code> 命令，应该可以看到这样的输出：</p>
@@ -34,6 +34,41 @@
 <p>初始化成功后，应该能看到这样的输出：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging with Hexo!</span><br></pre></td></tr></table></figure>
 
-<h3 id="测试博客构建"><a href="#测试博客构建" class="headerlink" title="测试博客构建"></a>测试博客构建</h3>]]></content>
+<h3 id="测试博客构建"><a href="#测试博客构建" class="headerlink" title="测试博客构建"></a>测试博客构建</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 生成博客页面</span></span><br><span class="line">$ hexo generate</span><br><span class="line"><span class="comment"># 在本地部署 Hexo 博客</span></span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>如果看到这样的输出，就说明构建好的博客已经成功在本地部署了</p>
+<p>在浏览器中打开<a href="http://localhost:4000/">这个地址</a>就能看到你亲手搭建的博客了！</p>
+<h3 id="博客基本信息设置"><a href="#博客基本信息设置" class="headerlink" title="博客基本信息设置"></a>博客基本信息设置</h3><p>博客文件夹中的 <code>_config.yml</code> 文件就是 <code>Hexo</code> 框架的配置文件。在文件中找到如下字段可以配置有关网站的各种信息</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">John</span> <span class="string">Doe</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">en</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<ul>
+<li><p><code>language</code> 字段配置的是网站的本地化语言，对于简体中文，它的值是 <code>zh-CN</code> ，而不是更常见的 <code>zh_CN</code> 。</p>
+</li>
+<li><p><code>timezone</code> 字段配置的是网站的时区。配置为 <code>Asia/Shanghai</code> 就是我们北京时间。</p>
+</li>
+</ul>
+<h3 id="博客部署"><a href="#博客部署" class="headerlink" title="博客部署"></a>博客部署</h3><p><strong>注意</strong>：如果想要将博客部署在 Github Pages 上，首先必要的就是拥有一个 Github 账户，没有的话需要去注册一个。</p>
+<p>新建一个以 <code>username.github.io</code> 命名的仓库，注意 <code>username</code> 应该替换为你的 Github 账户名。</p>
+<blockquote>
+<p>比如我的 Github 账户名是 <code>Curodenz</code>， 那么我应该新建一个叫做 <code>Curodenz.github.io</code> 的 Github 仓库。</p>
+</blockquote>
+<h3 id="下载和使用-NexT-主题"><a href="#下载和使用-NexT-主题" class="headerlink" title="下载和使用 NexT 主题"></a>下载和使用 NexT 主题</h3><p>在博客文件夹打开终端，输入以下命令来安装 NexT 主题：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用 Git 安装：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，在 <code>_config.yml</code> 文件中设置 <code>theme</code> 字段：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span> </span><br></pre></td></tr></table></figure>
+<p>清除之前生成的文件，再次进行生成和部署：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><a href="http://localhost:4000/">打开浏览器</a>， 可以看到博客已经变成了 NexT 主题。</p>
+<h3 id="NexT-主题设置"><a href="#NexT-主题设置" class="headerlink" title="NexT 主题设置"></a>NexT 主题设置</h3><p>接下来将进行 NexT 主题的设置，你可以直接编辑 <code>node_modules/hexo-theme-next/_config.yml</code>（使用 npm 安装）或 <code>themes/next/_config.yml</code>（使用 Git 安装）来修改设置。不过，这样直接修改的方式已经不被推荐，相对应的， NexT 的官方博客推荐在博客根目录建立 <code>_config.next.yml</code> 文件配置 NexT。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 npm 安装</span></span><br><span class="line">$ <span class="built_in">cp</span> node_modules/hexo-theme-next/_config.yml ./_config.next.yml</span><br><span class="line"><span class="comment"># 使用 Git 安装</span></span><br><span class="line">$ <span class="built_in">cp</span> themes/next/_config.yml ./_config.next.yml</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
   </entry>
 </search>
